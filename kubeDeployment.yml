@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: pull-list-api
+    labels:
+        app: vapor
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: vapor
+    template:
+        metadata:
+            labels:
+                app: vapor
+        spec:
+            containers:
+                - name: pull-list-api
+                  imagePullPolicy: IfNotPresent
+                  image: pull-list-api-vapor:latest
+                  ports:
+                      - containerPort: 8080
