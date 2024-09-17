@@ -1,6 +1,11 @@
 import Fluent
 import Vapor
 
+//struct Message: ResponseEncodable {
+//let status: String
+//let message: String
+//}
+
 struct ComicsController: RouteCollection {
 	func boot(routes: any Vapor.RoutesBuilder) throws {
 		let comics = routes.grouped("comics")
@@ -12,11 +17,9 @@ struct ComicsController: RouteCollection {
 		}
 	}
 
-
-
 	@Sendable
 	func lunar_index(req: Request) async throws -> [LunarComic] {
-		let comics = try await LunarComicModel.query(on: req.db).all().map {$0.toDTO()}
+		let comics = try await LunarComicModel.query(on: req.db).all().map { $0.toDTO() }
 		return (comics)
 	}
 
@@ -25,15 +28,21 @@ struct ComicsController: RouteCollection {
 		let com = try req.content.decode(LunarComic.self)
 		let comic = com.toModel()
 		try await comic.save(on: req.db)
+		//let mes: Message = Message(
+		//	status: "Success",
+		//	message: "comic with id \(com.id) upload successfully"
+		//)
 		return com
 	}
-	
+
 	@Sendable
-    func lunar_delete(req: Request) async throws -> HTTPStatus {
-        guard let comic = try await LunarComicModel.find((req.parameters.get("comicID")), on: req.db) else {
-            throw Abort(.notFound)
-        }
-        try await comic.delete(on: req.db)
-        return .noContent
-    }
+	func lunar_delete(req: Request) async throws -> HTTPStatus {
+		guard
+			let comic = try await LunarComicModel.find((req.parameters.get("comicID")), on: req.db)
+		else {
+			throw Abort(.notFound)
+		}
+		try await comic.delete(on: req.db)
+		return .noContent
+	}
 }
