@@ -1,12 +1,12 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Max Burger on 7/2/24.
 //
 
-import Foundation
 import Fluent
+import Foundation
 
 struct CreateLunarComic: AsyncMigration {
 	func prepare(on database: Database) async throws {
@@ -69,7 +69,7 @@ struct CreateLunarComic: AsyncMigration {
 			.field("Returnable", .string)
 			.field("ReturnWindow", .string)
 			.create()
-		
+
 	}
 
 	func revert(on database: Database) async throws {

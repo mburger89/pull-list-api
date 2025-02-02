@@ -9,7 +9,6 @@
 import Fluent
 import Foundation
 
-
 final class LunarComicModel: Model, @unchecked Sendable {
 	static let schema = "lunar_comics"
 
@@ -20,7 +19,7 @@ final class LunarComicModel: Model, @unchecked Sendable {
 	var Code: String
 
 	@Field(key: "AlternateLunarCode")
-	var	AlternateLunarCode: String
+	var AlternateLunarCode: String
 
 	@Field(key: "Title")
 	var Title: String
@@ -56,7 +55,7 @@ final class LunarComicModel: Model, @unchecked Sendable {
 	var UPC: Int
 
 	@Field(key: "ISBN")
-	var	ISBN: Int
+	var ISBN: Int
 
 	@Field(key: "EAN")
 	var EAN: Int
@@ -189,63 +188,63 @@ final class LunarComicModel: Model, @unchecked Sendable {
 
 	func toDTO() -> LunarComic {
 		.init(
-		id: (self.id ?? UUID()),
-		Code: self.Code,
-		AlternateLunarCode: self.AlternateLunarCode,
-		Title: self.Title,
-		MainDesc: self.MainDesc,
-		IssueNumber: self.IssueNumber,
-		MaxIssue: self.MaxIssue,
-		ItemCategory: self.ItemCategory,
-		ProductCategory: self.ProductCategory,
-		SeriesCode: self.SeriesCode,
-		Retail: self.Retail,
-		DiscountCode: self.DiscountCode,
-		Publisher: self.Publisher,
-		UPC: self.UPC,
-		ISBN: self.ISBN,
-		EAN: self.EAN,
-		Writer: self.Writer,
-		Artist: self.Artist,
-		CoverArtist: self.CoverArtist,
-		InitialOrderDue: self.InitialOrderDue,
-		FOCDate: self.FOCDate,
-		InStoreDate: self.InStoreDate,
-		ParentCode: self.ParentCode,
-		PageNumber: self.PageNumber,
-		NumberOfPages: self.NumberOfPages,
-		UnitWeight: self.UnitWeight,
-		Mature: self.Mature,
-		Adult: self.Adult,
-		O_A: self.O_A,
-		OrderFormNotes: self.OrderFormNotes,
-		Description: self.Description,
-		Color: self.Color,
-		VariantType: self.VariantType,
-		VariantDescription: self.VariantDescription,
-		VariantNumber: self.VariantNumber,
-		Printing: self.Printing,
-		CoverType: self.CoverType,
-		PublishingGroup: self.PublishingGroup,
-		ImprintCode: self.ImprintCode,
-		SubImprintGroup: self.SubImprintGroup,
-		FormatCode: self.FormatCode,
-		PaperCode: self.PaperCode,
-		CoverCode: self.CoverCode,
-		BindingCode: self.BindingCode,
-		TrimCode: self.TrimCode,
-		TrimSize: self.TrimSize,
-		CartonCount: self.CartonCount,
-		Rating: self.Rating,
-		TradeDress: self.TradeDress,
-		Popup: self.Popup,
-		Sequence: self.Sequence,
-		PublisherCode: self.PublisherCode,
-		T_Number: self.T_Number,
-		PublisherSeriesCode: self.PublisherSeriesCode,
-		ImageUrl: self.ImageUrl,
-		Returnable: self.Returnable,
-		ReturnWindow: self.ReturnWindow
+			id: (self.id ?? UUID()),
+			Code: self.Code,
+			AlternateLunarCode: self.AlternateLunarCode,
+			Title: self.Title,
+			MainDesc: self.MainDesc,
+			IssueNumber: self.IssueNumber,
+			MaxIssue: self.MaxIssue,
+			ItemCategory: self.ItemCategory,
+			ProductCategory: self.ProductCategory,
+			SeriesCode: self.SeriesCode,
+			Retail: self.Retail,
+			DiscountCode: self.DiscountCode,
+			Publisher: self.Publisher,
+			UPC: self.UPC,
+			ISBN: self.ISBN,
+			EAN: self.EAN,
+			Writer: self.Writer,
+			Artist: self.Artist,
+			CoverArtist: self.CoverArtist,
+			InitialOrderDue: self.InitialOrderDue,
+			FOCDate: self.FOCDate,
+			InStoreDate: self.InStoreDate,
+			ParentCode: self.ParentCode,
+			PageNumber: self.PageNumber,
+			NumberOfPages: self.NumberOfPages,
+			UnitWeight: self.UnitWeight,
+			Mature: self.Mature,
+			Adult: self.Adult,
+			O_A: self.O_A,
+			OrderFormNotes: self.OrderFormNotes,
+			Description: self.Description,
+			Color: self.Color,
+			VariantType: self.VariantType,
+			VariantDescription: self.VariantDescription,
+			VariantNumber: self.VariantNumber,
+			Printing: self.Printing,
+			CoverType: self.CoverType,
+			PublishingGroup: self.PublishingGroup,
+			ImprintCode: self.ImprintCode,
+			SubImprintGroup: self.SubImprintGroup,
+			FormatCode: self.FormatCode,
+			PaperCode: self.PaperCode,
+			CoverCode: self.CoverCode,
+			BindingCode: self.BindingCode,
+			TrimCode: self.TrimCode,
+			TrimSize: self.TrimSize,
+			CartonCount: self.CartonCount,
+			Rating: self.Rating,
+			TradeDress: self.TradeDress,
+			Popup: self.Popup,
+			Sequence: self.Sequence,
+			PublisherCode: self.PublisherCode,
+			T_Number: self.T_Number,
+			PublisherSeriesCode: self.PublisherSeriesCode,
+			ImageUrl: self.ImageUrl,
+			Returnable: self.Returnable,
+			ReturnWindow: self.ReturnWindow
 		)
 	}
 }

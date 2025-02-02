@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "pullList-api",
     platforms: [
-       .macOS(.v14)
+        .macOS(.v14)
     ],
     dependencies: [
         // 💧 A server-side Swift web framework.
