@@ -11,8 +11,8 @@ struct User: Content {
 	var created_at: Date
 	var home_cs: String
 
-	func toModel() -> UsersModel {
-		let model = UsersModel()
+	func toModel() -> UserModel {
+		let model = UserModel()
 
 		model.id = self.id
 		model.first_name = self.first_name

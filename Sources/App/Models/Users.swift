@@ -1,8 +1,8 @@
 import Fluent
 import Foundation
 
-final class UsersModel: Model, @unchecked Sendable {
-	static let schema = "users"
+final class UserModel: Model, @unchecked Sendable {
+	static let schema = "user"
 
 	@ID(key: .id)
 	var id: UUID?

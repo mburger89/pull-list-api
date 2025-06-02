@@ -17,6 +17,7 @@ struct Comic: Content {
 	var writer: [String]
 	var artist: [String]
 	var cover_artist: String
+    var colorist: [String]
 	var number_of_pages: Int
 	var thunbnail: URL
 	var print_date: Date
@@ -24,9 +25,15 @@ struct Comic: Content {
 	var initial_order_due: Date
 	var genre: String
 	var category: String
+    var series_code: String
+    var publisher_code: String
+    var rating: Double
+    var imprint_code: String
+    var in_store_date: Date
+    var mature: Bool
 
-	func toModel() -> Comics {
-		let model = Comics()
+	func toModel() -> ComicModel {
+		let model = ComicModel()
 
 		model.id = self.id
 		model.code = self.code
@@ -41,7 +48,8 @@ struct Comic: Content {
 		model.publisher = self.publisher
 		model.writer = self.writer
 		model.artist = self.artist
-		model.conver_artist = self.cover_artist
+		model.cover_artist = self.cover_artist
+        model.colorist = self.colorist
 		model.number_of_pages = self.number_of_pages
 		model.thumbnail = self.thunbnail
 		model.print_date = self.print_date
@@ -49,7 +57,13 @@ struct Comic: Content {
 		model.initial_order_due = self.initial_order_due
 		model.genre = self.genre
 		model.category = self.category
-
+        model.series_code = self.series_code
+        model.publisher_code = self.publisher_code
+        model.rating = self.rating
+        model.imprint_code = self.imprint_code
+        model.in_store_date = self.in_store_date
+        model.mature = false
+        
 		return model
 	}
 }

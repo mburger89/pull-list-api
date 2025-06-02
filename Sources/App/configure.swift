@@ -18,6 +18,8 @@ public func configure(_ app: Application) async throws {
     ), as: .psql)
 
 	app.migrations.add(CreateLunarComic())
+    app.migrations.add(CreateUsers())
+    app.migrations.add(CreateComic())
 	try await app.autoMigrate()
     // register routes
     try routes(app)

@@ -6,6 +6,7 @@ import Vapor
 //let message: String
 //}
 
+
 struct ComicsController: RouteCollection {
 	func boot(routes: any Vapor.RoutesBuilder) throws {
 		let comics = routes.grouped("comics")
@@ -26,7 +27,7 @@ struct ComicsController: RouteCollection {
 
 	@Sendable
 	func comic_index(req: Request) async throws -> [Comic] {
-		let comic_list = try await Comics.query(on: req.db).all.map { $0.toDTO() }
+		let comic_list = try await ComicModel.query(on: req.db).all().map { $0.toDTO() }
 		return comic_list
 	}
 
@@ -41,22 +42,22 @@ struct ComicsController: RouteCollection {
 	@Sendable
 	func get_comic(req: Request) async throws -> Comic {
 		guard
-			let comic_id = try await Comics.find((req.parameters.get("comicID")), on: req.db)
+			let comic = try await ComicModel.find((req.parameters.get("comicID")), on: req.db)
 		else {
 			throw Abort(.notFound)
 		}
-		let comic = try await Comics.query(on: req.db).filter(\.$id == comic_id).first()
-		return comic
+        return comic.toDTO()
 	}
+
 	@Sendable
 	func comic_delete(req: Request) async throws -> HTTPStatus {
 		guard
-			let comic = try await Comics.find((req.parameters.get("comicID")), on: req.db)
+			let comic = try await ComicModel.find((req.parameters.get("comicID")), on: req.db)
 		else {
 			throw Abort(.notFound)
 		}
 		try await comic.delete(on: req.db)
-		return .noContent
+		return .ok
 	}
 
 	@Sendable
@@ -84,6 +85,6 @@ struct ComicsController: RouteCollection {
 			throw Abort(.notFound)
 		}
 		try await comic.delete(on: req.db)
-		return .noContent
+		return .ok
 	}
 }

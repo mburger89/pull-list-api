@@ -2,7 +2,7 @@ import Fluent
 import Foundation
 
 /// pull list table model
-final class PullList: Model, @unchecked Sendable {
+final class PullListModel: Model, @unchecked Sendable {
 	static let schema = "pull_list"
 
 	@ID(key: .id)

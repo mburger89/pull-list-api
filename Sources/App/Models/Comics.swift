@@ -1,7 +1,7 @@
 import Fluent
 import Foundation
 
-final class Comics: Model, @unchecked Sendable {
+final class ComicModel: Model, @unchecked Sendable {
 	static let schema = "comic"
 
 	@ID(key: .id)
@@ -19,19 +19,19 @@ final class Comics: Model, @unchecked Sendable {
 	@Field(key: "EAN")
 	var ean: Int
 
-	@Field(key: "Title")
+	@Field(key: "title")
 	var title: String
 
-	@Field(key: "MainDesc")
+	@Field(key: "main_description")
 	var description: String
 
-	@Field(key: "VariantDescription")
+	@Field(key: "variant_description")
 	var variant_description: String
 
-	@Field(key: "VariantNumber")
+	@Field(key: "variant_number")
 	var variant_no: Int
 
-	@Field(key: "IssueNumber")
+	@Field(key: "issue_number")
 	var issue_no: Int
 
 	@Field(key: "price")
@@ -46,13 +46,13 @@ final class Comics: Model, @unchecked Sendable {
 	@Field(key: "artist")
 	var artist: [String]
 
-	@Field(key: "Cover_Artist")
-	var conver_artist: String
+	@Field(key: "cover_artist")
+	var cover_artist: String
 
 	@Field(key: "colorist")
 	var colorist: [String]
 
-	@Field(key: "number of pages")
+	@Field(key: "number_of_pages")
 	var number_of_pages: Int
 
 	@Field(key: "thumbnail")
@@ -64,7 +64,7 @@ final class Comics: Model, @unchecked Sendable {
 	@Field(key: "FOC")
 	var FOC: Date
 
-	@Field(key: "InitialOrderDue")
+	@Field(key: "initial_order_due")
 	var initial_order_due: Date
 
 	@Field(key: "genre")
@@ -72,11 +72,29 @@ final class Comics: Model, @unchecked Sendable {
 
 	@Field(key: "category")
 	var category: String
-
+    
+    @Field(key: "series_code")
+    var series_code: String
+    
+    @Field(key: "publisher_code")
+    var publisher_code: String
+    
+    @Field(key: "rating")
+    var rating: Double
+    
+    @Field(key: "imprint_code")
+    var imprint_code: String
+    
+    @Field(key: "in_store_date")
+    var in_store_date: Date
+    
+    @Field(key: "mature")
+    var mature: Bool
+    
 	init() {}
 
 	func toDTO() -> Comic {
-		init(
+		.init(
 			id: (self.id ?? UUID()),
 			code: self.code,
 			isbn: self.isbn,
@@ -91,13 +109,20 @@ final class Comics: Model, @unchecked Sendable {
 			writer: self.writer,
 			artist: self.artist,
 			cover_artist: self.cover_artist,
+            colorist: self.colorist,
 			number_of_pages: self.number_of_pages,
-			thumbnail: self.thumbnail,
+            thunbnail: self.thumbnail,
 			print_date: self.print_date,
 			FOC: self.FOC,
 			initial_order_due: self.initial_order_due,
 			genre: self.genre,
-			category: self.category
+			category: self.category,
+            series_code: self.series_code,
+            publisher_code: self.publisher_code,
+            rating: self.rating,
+            imprint_code: self.imprint_code,
+            in_store_date: self.in_store_date,
+            mature: self.mature
 		)
 	}
 }
